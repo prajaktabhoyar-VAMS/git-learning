@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Home page background */
+body.home {
+  background-image: url("night-jasmine.jpg");
+}
+
+/* Project page background */
+body.project {
+  background-image: url("night-jasmine.jpg");
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+button {
+  background-color: #fff;
+  color: #333;
+  font-size: 1.5em;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #f0c040;
+  color: #000;
+}
+
+h1 {
+  color: white;
+  font-size: 4em;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Fade animation */
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

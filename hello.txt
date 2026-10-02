@@ -1,4 +1,0 @@
-Hello! I am learning Git, GitHub and VS Code.
-Git hub push pull
-
-pull success pushing back to github
