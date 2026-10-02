@@ -1,2 +1,4 @@
 Hello! I am learning Git, GitHub and VS Code.
-Git hub pulling from github to vscode
+Git hub push pull
+
+pull success pushing back to github
