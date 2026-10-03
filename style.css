@@ -11,12 +11,12 @@ body {
 
 /* Home page background */
 body.home {
-  background-image: url("night-jasmine.jpg");
+  background-image: url("https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg");
 }
 
 /* Project page background */
 body.project {
-  background-image: url("night-jasmine.jpg");
+  background-image: url("https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg");
 }
 
 .overlay {
@@ -43,10 +43,19 @@ button:hover {
   color: #000;
 }
 
-h1 {
-  color: white;
+h1.glitter-text {
   font-size: 4em;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff00de, 0 0 30px #00c3ff;
+  border: 3px solid transparent;
+  border-image: linear-gradient(45deg, #ff00de, #00c3ff, #fff) 1;
+  padding: 10px 20px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #fff, 0 0 20px #ff00de; }
+  to { text-shadow: 0 0 20px #00c3ff, 0 0 40px #fff; }
 }
 
 /* Fade animation */
