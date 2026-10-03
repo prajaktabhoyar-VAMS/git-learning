@@ -17,7 +17,29 @@ body.home {
 
 /* Project page background */
 body.project {
-  background-image: url("https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg");
+  background-color: #000;
+}
+
+/* Project page background carousel */
+.carousel {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.carousel .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.5s ease-in-out, transform 6.5s ease-out;
+}
+
+.carousel .slide.active {
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 .overlay {
