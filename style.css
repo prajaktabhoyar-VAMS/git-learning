@@ -50,7 +50,17 @@ body.project {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-button.fog-button {
+.project-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  text-align: center;
+}
+
+.fog-button {
+  display: inline-block;
   background-color: #fff;
   color: #333;
   font-size: 1.5em;
@@ -61,12 +71,21 @@ button.fog-button {
   position: relative;
   box-shadow: 0 0 30px rgba(255,255,255,0.6), 0 0 60px rgba(200,200,200,0.4);
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-button.fog-button:hover {
+.fog-button:hover {
   background-color: #f0c040;
   color: #000;
   box-shadow: 0 0 40px rgba(255,255,255,0.8), 0 0 80px rgba(200,200,200,0.6);
+}
+
+.fog-button:focus-visible,
+.back-link:focus-visible,
+.carousel-control:focus-visible,
+.carousel-indicator:focus-visible {
+  outline: 3px solid #f0c040;
+  outline-offset: 4px;
 }
 
 h1.glitter-text {
@@ -106,4 +125,171 @@ h1.glitter-text {
   width: 100%;
   height: 100%;
   pointer-events: none;
+}
+
+/* Forts exploration carousel */
+body.forts-page {
+  min-height: 100vh;
+  height: auto;
+  overflow: auto;
+  color: #fff;
+  background: #101b24;
+  background-image: linear-gradient(135deg, rgba(7, 17, 24, 0.94), rgba(25, 45, 52, 0.9));
+}
+
+.forts-exploration {
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.forts-heading {
+  width: min(100%, 1100px);
+  text-align: center;
+}
+
+.back-link {
+  color: #f0c040;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.forts-heading h1 {
+  margin: 14px 0 8px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.forts-heading p {
+  margin: 0;
+  color: #e1e7e8;
+}
+
+.fort-carousel {
+  position: relative;
+  width: min(100%, 1100px);
+  height: min(58vh, 600px);
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #18252b;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.fort-slide,
+.fort-image {
+  width: 100%;
+  height: 100%;
+}
+
+.fort-slide {
+  position: relative;
+}
+
+.fort-image {
+  display: block;
+  object-fit: cover;
+}
+
+.fort-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 52px 72px 48px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.88));
+  text-shadow: 0 1px 5px #000;
+}
+
+.fort-caption h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+}
+
+.fort-caption p {
+  max-width: 700px;
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.fort-caption a {
+  color: #ffe08a;
+  font-size: 0.9rem;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 50%;
+  color: #172027;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.carousel-control:hover {
+  background: #f0c040;
+}
+
+.carousel-control.previous {
+  left: 16px;
+}
+
+.carousel-control.next {
+  right: 16px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carousel-indicator {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.carousel-indicator.active {
+  background: #f0c040;
+  border-color: #f0c040;
+}
+
+@media (max-width: 600px) {
+  .project-intro h1.glitter-text {
+    font-size: clamp(2.2rem, 11vw, 4rem);
+  }
+
+  .forts-exploration {
+    padding: 18px 14px;
+  }
+
+  .fort-carousel {
+    height: 56vh;
+    min-height: 340px;
+  }
+
+  .fort-caption {
+    padding: 48px 56px 48px;
+  }
 }

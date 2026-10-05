@@ -11,32 +11,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Snowfall effect
   const canvas = document.getElementById("snow");
+  if (!canvas) return;
+
   const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  if (!ctx) return;
+
+  const setCanvasSize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  };
 
   let flakes = [];
+  const totalFlakes = 120;
 
   function createFlakes() {
-    for (let i = 0; i < 100; i++) {
+    flakes = [];
+    for (let i = 0; i < totalFlakes; i++) {
       flakes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 3 + 2,
-        density: Math.random() * 2 + 1
+        density: Math.random() * 2 + 1,
+        drift: (Math.random() - 0.5) * 2
       });
     }
   }
 
   function drawFlakes() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
     ctx.beginPath();
+
     for (let i = 0; i < flakes.length; i++) {
-      let f = flakes[i];
-      ctx.moveTo(f.x, f.y);
-      ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2, true);
+      const flake = flakes[i];
+      ctx.moveTo(flake.x, flake.y);
+      ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2, true);
     }
+
     ctx.fill();
     moveFlakes();
   }
@@ -44,22 +55,41 @@ document.addEventListener("DOMContentLoaded", () => {
   let angle = 0;
   function moveFlakes() {
     angle += 0.01;
-    for (let i = 0; i < flakes.length; i++) {
-      let f = flakes[i];
-      f.y += Math.pow(f.density, 2) + 1;
-      f.x += Math.sin(angle) * 2;
 
-      if (f.y > canvas.height) {
+    for (let i = 0; i < flakes.length; i++) {
+      const flake = flakes[i];
+      flake.y += Math.pow(flake.density, 2) + 1;
+      flake.x += Math.sin(angle + flake.drift) * 1.5 + flake.drift;
+
+      if (flake.y > canvas.height) {
         flakes[i] = {
           x: Math.random() * canvas.width,
           y: 0,
-          radius: f.radius,
-          density: f.density
+          radius: flake.radius,
+          density: flake.density,
+          drift: flake.drift
         };
+      }
+
+      if (flake.x > canvas.width) {
+        flake.x = 0;
+      } else if (flake.x < 0) {
+        flake.x = canvas.width;
       }
     }
   }
 
+  setCanvasSize();
   createFlakes();
-  setInterval(drawFlakes, 25);
+  window.addEventListener("resize", () => {
+    setCanvasSize();
+    createFlakes();
+  });
+
+  function animate() {
+    drawFlakes();
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 });
