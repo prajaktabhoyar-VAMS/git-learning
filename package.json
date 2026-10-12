@@ -1,0 +1,25 @@
+{
+  "name": "prajkta-learning-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "carousel.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prajaktabhoyar-VAMS/git-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/prajaktabhoyar-VAMS/git-learning/issues"
+  },
+  "homepage": "https://github.com/prajaktabhoyar-VAMS/git-learning#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "http-server": "^14.1.1"
+  }
+}
